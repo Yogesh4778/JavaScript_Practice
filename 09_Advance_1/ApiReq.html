@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head> 
+<body style="background-color: #212121; color: white;">
+    <h1>Hello Jee</h1>
+    <h2 id="result" style="color:rgb(0, 128, 107);"></h2>
+</body>
+<script>
+    const request = 'https://api.github.com/users/Yogesh4778'; 
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',request);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+           const result =  JSON.parse(this.responseText)
+           console.log("API RESPONSE", result)
+            let res = document.querySelector('#result');
+            // let  img = document.createElement('img');
+            // img.src = 'result.avatar_url';
+            let followers = document.createElement('h3');
+            followers.innerText = result.followers;
+            document.body.appendChild(followers);
+            res.innerHTML = "Img created Successfully";
+        } 
+    }
+    xhr.send();
+ </script>   
+</html>
